@@ -12,14 +12,15 @@ import java.time.LocalDate;
  * @author Alexander
  */
 public class NotepadItem {
+    
     private String shortDescription;
     private String details;
-    private LocalDate date;
+    private LocalDate deadline;
 
-    public NotepadItem(String shortDescription, String details, LocalDate date) {
+    public NotepadItem(String shortDescription, String details, LocalDate deadline) {
         this.shortDescription = shortDescription;
         this.details = details;
-        this.date = date;
+        this.deadline = deadline;
     }
 
     public String getShortDescription() {
@@ -38,18 +39,16 @@ public class NotepadItem {
         this.details = details;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getDeadline() {
+        return deadline;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDeadline(LocalDate deadline) {
+        this.deadline = deadline;
     }
 
     @Override
     public String toString() {
         return shortDescription;
     }
-    
-    
 }
