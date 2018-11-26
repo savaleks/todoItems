@@ -5,6 +5,7 @@
  */
 package demoappfx;
 
+import demoappfx.datamodel.NotepadData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,7 +24,7 @@ public class MainDemoAppFX extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        //Button bt = new Button("handleButtonAction");
+        
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         //stage.setTitle("Notepad");
         stage.initStyle(StageStyle.UNDECORATED);
@@ -43,19 +44,15 @@ public class MainDemoAppFX extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    @Override
+    public void stop() throws Exception {
+        try {
+            NotepadData.getInstance().storeNotepadItems();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
     
-//    public void pressButton(MouseEvent event) throws Exception {               
-//        try{
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("window.fxml"));
-//            Parent root1 = (Parent) fxmlLoader.load();
-//            Stage stage = new Stage();
-//            stage.initModality(Modality.APPLICATION_MODAL);
-//            stage.initStyle(StageStyle.UNDECORATED);
-//            stage.setScene(new Scene(root1));  
-//            stage.show();
-//        } catch(Exception e) {
-//           e.printStackTrace();
-//          }
-//}
     
 }

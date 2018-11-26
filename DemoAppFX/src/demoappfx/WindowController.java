@@ -5,6 +5,7 @@
  */
 package demoappfx;
 
+import demoappfx.datamodel.NotepadData;
 import demoappfx.datamodel.NotepadItem;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -55,6 +56,8 @@ public class WindowController {
         todoItems.add(item3);
         todoItems.add(item4);
         todoItems.add(item5);
+        
+        NotepadData.getInstance().setTodoItems(todoItems);
 
         notepadView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<NotepadItem>() {
             @Override
