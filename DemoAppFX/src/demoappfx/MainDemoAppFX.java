@@ -10,9 +10,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -26,11 +23,8 @@ public class MainDemoAppFX extends Application {
     public void start(Stage stage) throws Exception {
         
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        //stage.setTitle("Notepad");
-        stage.initStyle(StageStyle.UNDECORATED);
-               
-        Scene scene = new Scene(root);
-       
+        stage.initStyle(StageStyle.UNDECORATED);      
+        Scene scene = new Scene(root);      
         stage.setScene(scene);
         stage.show();
         
@@ -48,10 +42,15 @@ public class MainDemoAppFX extends Application {
     @Override
     public void stop() throws Exception {
         try {
-            NotepadData.getInstance().storeNotepadItems();
+            NotepadData.getInstance().storeTodoItems();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Override
+    public void init() throws Exception {
+        super.init(); //To change body of generated methods, choose Tools | Templates.
     }
     
     

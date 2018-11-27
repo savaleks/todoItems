@@ -46,9 +46,10 @@ public class FXMLDocumentController implements Initializable {
         if (txtUsername.getText().equals("") && txtPassword.getText().equals("")) {
             labelStatus.setText("Login succesfull!");
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("window.fxml"));
+            Parent root1 = FXMLLoader.load(getClass().getResource("window.fxml"));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.DECORATED);
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root1);
             stage.setScene(scene);
             stage.show();
         } else {

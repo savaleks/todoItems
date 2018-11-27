@@ -74,7 +74,7 @@ public class NotepadData {
         }
     }
 
-    public void storeNotepadItems() throws IOException {
+    public void storeTodoItems() throws IOException {
 
         Path path = Paths.get(filename);
         BufferedWriter bw = Files.newBufferedWriter(path);
@@ -94,5 +94,6 @@ public class NotepadData {
                 bw.close();
             }
         }
+
 
     }}
