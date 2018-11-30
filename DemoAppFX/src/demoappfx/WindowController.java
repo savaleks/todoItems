@@ -20,6 +20,12 @@ import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.layout.BorderPane;
 
 
 /**
@@ -38,6 +44,9 @@ public class WindowController {
 
     @FXML
     private Label deadlineLabel;
+    
+    @FXML
+    private BorderPane mainBorderPane;
 
     public void initialize() {
         NotepadItem item1 = new NotepadItem("Mail birthday card", "Buy a 30th birthday card for John",
@@ -75,6 +84,29 @@ public class WindowController {
         notepadView.getItems().setAll(todoItems);
         notepadView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         notepadView.getSelectionModel().selectFirst();
+    }
+    
+    @FXML
+    public void showNewItemWindow(){
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainBorderPane.getScene().getWindow());
+        try {
+            Parent root1 = FXMLLoader.load(getClass().getResource("newWindow.fxml"));
+            dialog.getDialogPane().setContent(root1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+        
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        
+        Optional<ButtonType> result = dialog.showAndWait();
+        if (result.isPresent()&&result.get() == ButtonType.OK) {
+            System.out.println("ok pressed");
+        } else {
+            System.out.println("cancel pressed");
+        }
     }
 
     @FXML
