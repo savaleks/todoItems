@@ -9,6 +9,6 @@ and open the template in the editor.
 */
 
 #anPane{
-    -fx-background-image:url("/images/background.jpg");
+    -fx-background-image:url("/loginapptodoitem/images/image.jpg");
     -fx-background-size: 100% 100%;
 }

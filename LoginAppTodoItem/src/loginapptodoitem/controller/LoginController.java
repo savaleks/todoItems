@@ -5,6 +5,7 @@
  */
 package loginapptodoitem.controller;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import loginapptodoitem.DBConnection.Connection;
+import loginapptodoitem.DBConnection.ConnectionClass;
 
 /**
  *
@@ -35,15 +36,12 @@ public class LoginController {
     @FXML
     private Button login;
     
-    Connection con;
+    ConnectionClass conClass = new ConnectionClass();
     
-    Connection conClass = new Connection();
-    
-
     @FXML
     void createlogin(ActionEvent event) throws SQLException {
 
-        con = conClass.getConnection();
+        Connection con = conClass.getConnection();
         System.out.println(con);
         System.out.println("Connection successful");
     }
