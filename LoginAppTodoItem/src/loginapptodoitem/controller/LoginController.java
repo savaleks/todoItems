@@ -5,14 +5,19 @@
  */
 package loginapptodoitem.controller;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import loginapptodoitem.DBConnection.ConnectionClass;
 
 /**
@@ -47,8 +52,13 @@ public class LoginController {
     }
 
     @FXML
-    void createregister(ActionEvent event) {
+    void createregister(ActionEvent event) throws IOException {
 
+        register.getScene().getWindow().hide();
+        Stage signup = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/loginapptodoitem/FXML_Files/SignUp.fxml"));
+        Scene scene = new Scene(root);
+        signup.setScene(scene);
+        signup.show();
     }
-
 }

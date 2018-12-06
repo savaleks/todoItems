@@ -47,12 +47,12 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </CheckBox>
-      <Button fx:id="signup" layoutX="61.0" layoutY="464.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="151.0" style="-fx-background-color: #0080FF;" text="SignUp">
+      <Button fx:id="signup" layoutX="61.0" layoutY="464.0" mnemonicParsing="false" onAction="#signUP" prefHeight="49.0" prefWidth="151.0" style="-fx-background-color: #0080FF;" text="SignUp">
          <font>
             <Font name="Verdana" size="22.0" />
          </font>
       </Button>
-      <Button fx:id="login" layoutX="234.0" layoutY="464.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="151.0" style="-fx-border-color: #0080FF; -fx-background-color: lightblue;" text="Login">
+      <Button fx:id="login" layoutX="234.0" layoutY="464.0" mnemonicParsing="false" onAction="#logIN" prefHeight="49.0" prefWidth="151.0" style="-fx-border-color: #0080FF; -fx-background-color: lightblue;" text="Login">
          <font>
             <Font name="Verdana" size="22.0" />
          </font>

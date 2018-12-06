@@ -15,8 +15,10 @@ import java.sql.SQLException;
  */
 public class ConnectionClass extends Configs{
     
+    Connection con;
+    
     public Connection getConnection() throws SQLException{ 
-        Connection con = null;
+        
         try {
          Class.forName("com.mysql.cj.jdbc.Driver");
          String str = "jdbc:mysql://" + Configs.dbhost + ":" + Configs.dbport + "/" + Configs.dbname;
