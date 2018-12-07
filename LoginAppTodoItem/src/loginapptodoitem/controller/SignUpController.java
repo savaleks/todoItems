@@ -5,12 +5,14 @@
  */
 package loginapptodoitem.controller;
 
+import alertmessage.Message;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,16 +30,18 @@ import loginapptodoitem.DBConnection.ConnectionClass;
  *
  * @author Alexander
  */
-public class SignUpController implements Initializable{
+public class SignUpController implements Initializable {
 
-      @FXML
+    private static final Logger logger = Logger.getLogger(SignUpController.class.getName());
+
+    @FXML
     private TextField fullname;
 
     @FXML
-    private PasswordField email;
+    private PasswordField password;
 
     @FXML
-    private TextField password;
+    private TextField email;
 
     @FXML
     private CheckBox check;
@@ -47,12 +51,12 @@ public class SignUpController implements Initializable{
 
     @FXML
     private Button login;
-    
-    ConnectionClass conToDB = new ConnectionClass();
-    Connection con;
-    
+
+//    ConnectionClass conToDB = new ConnectionClass();
+//    Connection connection;
     private PreparedStatement ps;
-    
+    Message msg = new Message();
+
     @FXML
     public void logIN(ActionEvent event) throws IOException {
 
@@ -66,25 +70,33 @@ public class SignUpController implements Initializable{
 
     @FXML
     public void signUP(ActionEvent event) throws SQLException {
-
-        con = conToDB.getConnection();
-        String insert = "INSERT INTO student(fullName, password, email) VALUES(?,?,?)";               
-        ps = con.prepareStatement(insert);
         
+        if (check.isSelected()) {
+        
+        ConnectionClass conToDB = new ConnectionClass();
+        Connection connection;
+        connection = conToDB.getConnection();
+        String insert = "INSERT INTO student(fullName, password, email) VALUES(?,?,?)";
+        ps = connection.prepareStatement(insert);
+
         ps.setString(1, fullname.getText());
         ps.setString(2, password.getText());
         ps.setString(3, email.getText());
-        
+
         ps.executeUpdate();
-        System.out.println("Data inserted");
+        msg.setMessage("Data inserted!");
+        
+        } else {
+            msg.setMessage("You must agree terms and condition");
+        }
     }
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       
+
         fullname.setStyle("-fx-text-inner-color: #0080FF");
         email.setStyle("-fx-text-inner-color: #0080FF");
         password.setStyle("-fx-text-inner-color: #0080FF");
     }
-    
+
 }

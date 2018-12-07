@@ -19,11 +19,11 @@
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <PasswordField fx:id="email" layoutX="61.0" layoutY="239.0" prefHeight="49.0" prefWidth="324.0">
+      <PasswordField fx:id="password" layoutX="61.0" layoutY="239.0" prefHeight="49.0" prefWidth="324.0">
          <font>
             <Font size="18.0" />
          </font></PasswordField>
-      <TextField fx:id="password" layoutX="61.0" layoutY="349.0" prefHeight="49.0" prefWidth="324.0">
+      <TextField fx:id="email" layoutX="61.0" layoutY="349.0" prefHeight="49.0" prefWidth="324.0">
          <font>
             <Font size="18.0" />
          </font></TextField>

@@ -5,8 +5,11 @@
  */
 package loginapptodoitem.controller;
 
+import alertmessage.Message;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,14 +44,41 @@ public class LoginController {
     @FXML
     private Button login;
     
+    private PreparedStatement pst;
+    
+    Connection con;
     ConnectionClass conClass = new ConnectionClass();
+    Message msg = new Message();
     
     @FXML
-    void createlogin(ActionEvent event) throws SQLException {
+    void createlogin(ActionEvent event) throws SQLException, IOException {
 
-        Connection con = conClass.getConnection();
-        System.out.println(con);
-        System.out.println("Connection successful");
+        con = conClass.getConnection();
+        String str = "SELECT * FROM course.student WHERE fullName=? and password=?";
+        pst = con.prepareStatement(str);
+        pst.setString(1, username.getText());
+        pst.setString(2, password.getText());
+        
+        ResultSet rs = pst.executeQuery();
+        int count = 0;
+        
+        while(rs.next()){
+            count = count+1;
+        }
+        
+        if (count == 2) {
+            msg.setMessage("Login successful!");
+            
+            login.getScene().getWindow().hide();
+            Stage home = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/loginapptodoitem/FXML_Files/HomePage.fxml"));
+            home.setScene(new Scene(root));
+            home.show();
+            
+            //msg.setMessage("Login successful!");
+        } else {
+            msg.setMessage("Login failed..");
+        }
     }
 
     @FXML

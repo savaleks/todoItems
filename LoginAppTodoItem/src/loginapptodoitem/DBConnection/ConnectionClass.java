@@ -20,11 +20,13 @@ public class ConnectionClass extends Configs{
     public Connection getConnection() throws SQLException{ 
         
         try {
+     
          Class.forName("com.mysql.cj.jdbc.Driver");
-         String str = "jdbc:mysql://" + Configs.dbhost + ":" + Configs.dbport + "/" + Configs.dbname;
+         String str = "jdbc:mysql://localhost/course";
          con = DriverManager.getConnection(str, Configs.dbuser, Configs.dbpass);
-         con.close();
+         //con.close();
       } catch (ClassNotFoundException | SQLException ex) {
+          ex.getStackTrace();
       }
         return con;
     }
