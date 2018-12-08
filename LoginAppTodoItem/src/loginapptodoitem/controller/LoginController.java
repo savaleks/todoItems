@@ -71,7 +71,7 @@ public class LoginController {
         }
         
         if (count == 1) {
-            msg.setMessage("Login successful!");
+            //msg.setMessage("Login successful!");
             
             login.getScene().getWindow().hide();
             Stage home = new Stage();

@@ -13,18 +13,18 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class Student {
     
-    private final SimpleStringProperty fullName;
+    private final SimpleStringProperty fullname;
     private final SimpleStringProperty password;
     private final SimpleStringProperty email;
     
     Student(String fname, String pass, String mail){
-        this.fullName = new SimpleStringProperty(fname);
+        this.fullname = new SimpleStringProperty(fname);
         this.password = new SimpleStringProperty(pass);
         this.email = new SimpleStringProperty(mail);
     }
 
     public String getFullName() {
-        return fullName.get();
+        return fullname.get();
     }
 
     public String getPassword() {
@@ -36,7 +36,7 @@ public class Student {
     }
     
     public void setFullName(String fname){
-        fullName.set(fname);
+        fullname.set(fname);
     }
     
     public void setPassword(String pass){

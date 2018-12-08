@@ -44,7 +44,6 @@ public class HomePageController implements Initializable{
     private TableColumn<Student, String> email;
     
     Connection con;
-    PreparedStatement pst;
     ConnectionClass conObj = new ConnectionClass();
     
     @FXML
@@ -54,7 +53,7 @@ public class HomePageController implements Initializable{
         ObservableList<Student> data = FXCollections.observableArrayList();
         table.setItems(data);
         String str = "SELECT * FROM student";
-        pst = con.prepareStatement(str);
+        PreparedStatement pst = con.prepareStatement(str);
         ResultSet rs = pst.executeQuery();
         while (rs.next()) {            
             Student student = new Student(rs.getString("fullName"), rs.getString("password"), rs.getString("email"));
@@ -64,8 +63,8 @@ public class HomePageController implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-      
-        fullname.setCellValueFactory(new PropertyValueFactory<Student, String>("fullName"));
+        
+        fullname.setCellValueFactory(new PropertyValueFactory<Student,String>("fullName"));     
         password.setCellValueFactory(new PropertyValueFactory<Student, String>("password"));
         email.setCellValueFactory(new PropertyValueFactory<Student, String>("email"));
     }
