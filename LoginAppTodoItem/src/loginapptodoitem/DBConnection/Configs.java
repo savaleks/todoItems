@@ -15,7 +15,7 @@ public class Configs {
     protected static String dbport = "3006";
     protected static String dbuser = "root";
     protected static String dbpass = "";
-    protected static String url = "jdbc:mysql://localhost/table_name?autoReconnect=true&useSSL=false";
+    protected static String url = "jdbc:mysql://localhost/course?autoReconnect=true&useSSL=false";
     
     
 }

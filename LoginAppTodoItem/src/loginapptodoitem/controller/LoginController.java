@@ -23,11 +23,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import loginapptodoitem.DBConnection.ConnectionClass;
 
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+
 /**
  *
  * @author Alexander
  */
 public class LoginController {
+    
+   // private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
     @FXML
     private AnchorPane anPane;
@@ -44,17 +49,16 @@ public class LoginController {
     @FXML
     private Button login;
     
-    private PreparedStatement pst;
-    
+    PreparedStatement pst;
     Connection con;
     ConnectionClass conClass = new ConnectionClass();
     Message msg = new Message();
     
     @FXML
     void createlogin(ActionEvent event) throws SQLException, IOException {
-
+       
         con = conClass.getConnection();
-        String str = "SELECT * FROM course.student WHERE fullName=? and password=?";
+        String str = "SELECT * FROM student WHERE fullName=? and password=?";
         pst = con.prepareStatement(str);
         pst.setString(1, username.getText());
         pst.setString(2, password.getText());
@@ -66,7 +70,7 @@ public class LoginController {
             count = count+1;
         }
         
-        if (count == 2) {
+        if (count == 1) {
             msg.setMessage("Login successful!");
             
             login.getScene().getWindow().hide();

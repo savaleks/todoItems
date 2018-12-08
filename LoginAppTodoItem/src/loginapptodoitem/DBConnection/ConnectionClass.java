@@ -22,9 +22,8 @@ public class ConnectionClass extends Configs{
         try {
      
          Class.forName("com.mysql.cj.jdbc.Driver");
-         String str = "jdbc:mysql://localhost/course";
-         con = DriverManager.getConnection(str, Configs.dbuser, Configs.dbpass);
-         //con.close();
+         con = DriverManager.getConnection(url, Configs.dbuser, Configs.dbpass);
+        
       } catch (ClassNotFoundException | SQLException ex) {
           ex.getStackTrace();
       }
