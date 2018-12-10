@@ -14,7 +14,7 @@ public class Configs {
     protected static String dbhost = "localhost";
     protected static String dbport = "3006";
     protected static String dbuser = "root";
-    protected static String dbpass = "savaleks";
+    protected static String dbpass = "";
     protected static String url = "jdbc:mysql://localhost/course?autoReconnect=true&useSSL=false";
     
     

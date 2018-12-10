@@ -70,7 +70,7 @@ public class LoginController {
             
             login.getScene().getWindow().hide();
             Stage home = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/loginapptodoitem/FXML_Files/HomePage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/loginapptodoitem/FXML_Files/TodoWindow.fxml"));
             home.setScene(new Scene(root));
             home.show();
             
