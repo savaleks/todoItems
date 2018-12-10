@@ -23,16 +23,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import loginapptodoitem.DBConnection.ConnectionClass;
 
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-
 /**
  *
  * @author Alexander
  */
 public class LoginController {
-    
-   // private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
     @FXML
     private AnchorPane anPane;
@@ -79,7 +74,6 @@ public class LoginController {
             home.setScene(new Scene(root));
             home.show();
             
-            //msg.setMessage("Login successful!");
         } else {
             msg.setMessage("Login failed..");
         }

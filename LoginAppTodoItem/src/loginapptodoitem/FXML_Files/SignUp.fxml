@@ -8,51 +8,51 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="475.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loginapptodoitem.controller.SignUpController">
+<AnchorPane id="AnchorPane" fx:id="anPane" prefHeight="490.0" prefWidth="324.0" stylesheets="@../CSS_Files/application.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loginapptodoitem.controller.SignUpController">
    <children>
-      <Label layoutX="52.0" layoutY="25.0" prefHeight="36.0" prefWidth="112.0" text="Sign up">
+      <Label layoutX="106.0" layoutY="14.0" prefHeight="36.0" prefWidth="112.0" text="Sign up">
          <font>
             <Font name="Arial Narrow" size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="fullname" layoutX="61.0" layoutY="125.0" prefHeight="49.0" prefWidth="324.0">
+      <TextField fx:id="fullname" layoutX="29.0" layoutY="81.0" prefHeight="49.0" prefWidth="260.0">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <PasswordField fx:id="password" layoutX="61.0" layoutY="239.0" prefHeight="49.0" prefWidth="324.0">
+      <PasswordField fx:id="password" layoutX="29.0" layoutY="167.0" prefHeight="49.0" prefWidth="260.0">
          <font>
             <Font size="18.0" />
          </font></PasswordField>
-      <TextField fx:id="email" layoutX="61.0" layoutY="349.0" prefHeight="49.0" prefWidth="324.0">
+      <TextField fx:id="email" layoutX="29.0" layoutY="257.0" prefHeight="49.0" prefWidth="260.0">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <Label layoutX="61.0" layoutY="94.0" prefHeight="31.0" prefWidth="112.0" text="Full Name">
+      <Label layoutX="29.0" layoutY="50.0" prefHeight="31.0" prefWidth="112.0" text="Full Name">
          <font>
             <Font name="Monospaced Regular" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="61.0" layoutY="318.0" prefHeight="31.0" prefWidth="80.0" text="Email">
+      <Label layoutX="29.0" layoutY="226.0" prefHeight="31.0" prefWidth="80.0" text="Email">
          <font>
             <Font name="Monospaced Regular" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="61.0" layoutY="208.0" prefHeight="31.0" prefWidth="112.0" text="Password">
+      <Label layoutX="29.0" layoutY="136.0" prefHeight="31.0" prefWidth="112.0" text="Password">
          <font>
             <Font name="Monospaced Regular" size="18.0" />
          </font>
       </Label>
-      <CheckBox fx:id="check" layoutX="65.0" layoutY="430.0" mnemonicParsing="false" text="I agree with terms and condition">
+      <CheckBox fx:id="check" layoutX="29.0" layoutY="320.0" mnemonicParsing="false" text="I agree with terms and condition">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </CheckBox>
-      <Button fx:id="signup" layoutX="61.0" layoutY="464.0" mnemonicParsing="false" onAction="#signUP" prefHeight="49.0" prefWidth="151.0" style="-fx-background-color: #0080FF;" text="SignUp">
+      <Button fx:id="signup" layoutX="29.0" layoutY="354.0" mnemonicParsing="false" onAction="#signUP" prefHeight="31.0" prefWidth="260.0" style="-fx-background-color: #088A08;" text="SignUp" textFill="#2b2c29">
          <font>
             <Font name="Verdana" size="22.0" />
          </font>
       </Button>
-      <Button fx:id="login" layoutX="234.0" layoutY="464.0" mnemonicParsing="false" onAction="#logIN" prefHeight="49.0" prefWidth="151.0" style="-fx-border-color: #0080FF; -fx-background-color: lightblue;" text="Login">
+      <Button fx:id="login" layoutX="29.0" layoutY="411.0" mnemonicParsing="false" onAction="#logIN" prefHeight="31.0" prefWidth="260.0" style="-fx-border-color: #0080FF; -fx-background-color: lightblue;" text="Login">
          <font>
             <Font name="Verdana" size="22.0" />
          </font>

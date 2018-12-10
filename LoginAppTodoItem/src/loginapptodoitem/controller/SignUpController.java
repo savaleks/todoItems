@@ -12,7 +12,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,8 +31,6 @@ import loginapptodoitem.DBConnection.ConnectionClass;
  */
 public class SignUpController implements Initializable {
 
-    private static final Logger logger = Logger.getLogger(SignUpController.class.getName());
-
     @FXML
     private TextField fullname;
 
@@ -52,8 +49,6 @@ public class SignUpController implements Initializable {
     @FXML
     private Button login;
 
-//    ConnectionClass conToDB = new ConnectionClass();
-//    Connection connection;
     private PreparedStatement ps;
     Message msg = new Message();
 
