@@ -34,7 +34,7 @@ import javafx.scene.layout.BorderPane;
  */
 public class TodoWindowController {
     
-   private List<NotepadItem> todoItems;
+    private List<NotepadItem> todoItems;
 
     @FXML
     private ListView<NotepadItem> notepadView;
@@ -49,23 +49,11 @@ public class TodoWindowController {
     private BorderPane mainBorderPane;
 
     public void initialize() {
-        NotepadItem item1 = new NotepadItem("Mail birthday card", "Buy a 30th birthday card for John",
-                LocalDate.of(2016, Month.APRIL, 25));
-        NotepadItem item2 = new NotepadItem("Doctor's Appointment", "See Dr. Smith at 123 Main Street.  Bring paperwork",
-                LocalDate.of(2016, Month.MAY, 23));
-        NotepadItem item3 = new NotepadItem("Finish design proposal for client", "I promised Mike I'd email website mockups by Friday 22nd April",
-                LocalDate.of(2016, Month.APRIL, 22));
-        NotepadItem item4 = new NotepadItem("Pickup Doug at the train station", "Doug's arriving on March 23 on the 5:00 train",
-                LocalDate.of(2016, Month.MARCH, 23));
-        NotepadItem item5 = new NotepadItem("Pick up dry cleaning", "The clothes should be ready by Wednesday",
-                LocalDate.of(2016, Month.APRIL,20));
+        NotepadItem item1 = new NotepadItem("Title section", "Description section",
+                LocalDate.of(2018, Month.APRIL, 25));
 
         todoItems = new ArrayList<NotepadItem>();
         todoItems.add(item1);
-        todoItems.add(item2);
-        todoItems.add(item3);
-        todoItems.add(item4);
-        todoItems.add(item5);
         
         NotepadData.getInstance().setTodoItems(todoItems);
 
@@ -75,8 +63,9 @@ public class TodoWindowController {
                 if(newValue != null) {
                     NotepadItem item = notepadView.getSelectionModel().getSelectedItem();
                     itemDetailsTextArea.setText(item.getDetails());
-                    DateTimeFormatter df = DateTimeFormatter.ofPattern("MMMM d, yyyy"); 
-                    deadlineLabel.setText(df.format(item.getDeadline()));
+                   // DateTimeFormatter df = DateTimeFormatter.ofPattern("MMMM d, yyyy"); 
+                    //deadlineLabel.setText(df.format(item.getDeadline()));
+                   deadlineLabel.setText(item.getDeadline().toString());
                 }
             }
         });
@@ -87,15 +76,15 @@ public class TodoWindowController {
     }
     
     @FXML
-    public void showNewItemWindow(){
+    public void showNewItemDialog(){
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
         try {
-            Parent root1 = FXMLLoader.load(getClass().getResource("newWindow.fxml"));
-            dialog.getDialogPane().setContent(root1);
+            Parent root = FXMLLoader.load(getClass().getResource("/loginapptodoitem/FXML_Files/newWindow.fxml"));
+            dialog.getDialogPane().setContent(root);
         } catch (Exception e) {
             e.printStackTrace();
-            return;
+                    return;
         }
         
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
@@ -108,6 +97,8 @@ public class TodoWindowController {
             System.out.println("cancel pressed");
         }
     }
+    
+    
 
     @FXML
     public void handleClickListView() {
