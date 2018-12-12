@@ -5,7 +5,7 @@
  */
 package loginapptodoitem.controller;
 
-import loginaootodoitem.datamodel.NotepadData;
+import java.sql.SQLException;
 import loginaootodoitem.datamodel.NotepadItem;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,23 +17,20 @@ import javafx.scene.control.TextArea;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.layout.BorderPane;
-
 
 /**
  *
  * @author Alexander
  */
 public class TodoWindowController {
-    
+
     private List<NotepadItem> todoItems;
 
     @FXML
@@ -44,7 +41,7 @@ public class TodoWindowController {
 
     @FXML
     private Label deadlineLabel;
-    
+
     @FXML
     private BorderPane mainBorderPane;
 
@@ -54,18 +51,14 @@ public class TodoWindowController {
 
         todoItems = new ArrayList<NotepadItem>();
         todoItems.add(item1);
-        
-        NotepadData.getInstance().setTodoItems(todoItems);
 
         notepadView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<NotepadItem>() {
             @Override
             public void changed(ObservableValue<? extends NotepadItem> observable, NotepadItem oldValue, NotepadItem newValue) {
-                if(newValue != null) {
+                if (newValue != null) {
                     NotepadItem item = notepadView.getSelectionModel().getSelectedItem();
                     itemDetailsTextArea.setText(item.getDetails());
-                   // DateTimeFormatter df = DateTimeFormatter.ofPattern("MMMM d, yyyy"); 
-                    //deadlineLabel.setText(df.format(item.getDeadline()));
-                   deadlineLabel.setText(item.getDeadline().toString());
+                    deadlineLabel.setText(item.getDeadline().toString());
                 }
             }
         });
@@ -74,31 +67,33 @@ public class TodoWindowController {
         notepadView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         notepadView.getSelectionModel().selectFirst();
     }
-    
+
     @FXML
-    public void showNewItemDialog(){
+    public void showNewItemDialog() throws SQLException {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
+        FXMLLoader fXMLLoader = new FXMLLoader();
+        fXMLLoader.setLocation(getClass().getResource("/loginapptodoitem/FXML_Files/newWindow.fxml"));
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/loginapptodoitem/FXML_Files/newWindow.fxml"));
-            dialog.getDialogPane().setContent(root);
+            dialog.getDialogPane().setContent(fXMLLoader.load());
         } catch (Exception e) {
             e.printStackTrace();
-                    return;
+            return;
         }
-        
+
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
-        
+
         Optional<ButtonType> result = dialog.showAndWait();
-        if (result.isPresent()&&result.get() == ButtonType.OK) {
+        if (result.isPresent() && result.get() == ButtonType.OK) {
             System.out.println("ok pressed");
+            NewWindowController dialogWindow = fXMLLoader.getController();
+            dialogWindow.insertToDB();
+
         } else {
             System.out.println("cancel pressed");
         }
     }
-    
-    
 
     @FXML
     public void handleClickListView() {
@@ -107,4 +102,3 @@ public class TodoWindowController {
         deadlineLabel.setText(item.getDeadline().toString());
     }
 }
-

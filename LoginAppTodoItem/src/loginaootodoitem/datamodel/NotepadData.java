@@ -34,19 +34,15 @@ public class NotepadData {
         return todoItems;
     }
 
-    public void setTodoItems(List<NotepadItem> todoItems) {
-        this.todoItems = todoItems;
+    public void addTodoItem(NotepadItem item) {
+        todoItems.add(item);
     }
 
     public void loadTodoItems() throws IOException {
 
-      
     }
 
     public void storeTodoItems() throws IOException {
-
-        
-
 
     }
 }

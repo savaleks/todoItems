@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<DialogPane headerText="Create Todo Item" prefHeight="133.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loginapptodoitem.controller.NewWindowController">
+<DialogPane fx:id="insertData" headerText="Create Todo Item" prefHeight="133.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loginapptodoitem.controller.NewWindowController">
    <content>
       <GridPane hgap="10.0" prefHeight="197.0" prefWidth="521.0" vgap="10.0">
         <columnConstraints>
@@ -24,11 +24,11 @@
         </rowConstraints>
          <children>
             <Label text="Short description:" />
-            <TextField prefHeight="25.0" prefWidth="342.0" GridPane.columnIndex="1" />
+            <TextField fx:id="shortDescriptionField" prefHeight="25.0" prefWidth="342.0" GridPane.columnIndex="1" />
             <Label text="Details:" GridPane.rowIndex="1" />
-            <TextArea prefHeight="100.0" prefWidth="248.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextArea fx:id="detailsArea" prefHeight="100.0" prefWidth="248.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Deadline:" GridPane.rowIndex="2" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="deadlinePicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </content>
